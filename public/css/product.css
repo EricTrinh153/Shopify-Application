@@ -1,0 +1,58 @@
+html, body{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.container{
+	height: 30.5em;
+	margin: auto 0 auto 0;
+	padding: 10px;
+	border: 1px solid #eee;
+	background-color:#F0FFFF;
+	border-radius: 1em 1em 1em 1em;
+	height: auto;
+	 
+}
+.product-container{
+
+	margin: auto 0 auto 0;
+	padding: 10px;
+	border: 1px solid #eee;
+	background-color:#F0FFFF;
+}
+#main-nav{
+
+	border: 1px solid #eee;
+	background-color:#B0E0E6;
+
+	
+}
+#content{
+
+	border: 1px solid #eee;
+	background-color: #B0E0E6;
+	padding-left: 10px;
+
+}
+ul{
+	list-style: none;
+}
+a:link{
+	text-decoration: none;
+}
+header{
+	background-color:  
+}
+#basic-info{
+	position: relative;
+	margin: 10 auto 10 auto;
+	padding: 0 auto 0 auto;
+	
+}
+#extra-info{
+	position: relative;
+	padding: 10px auto 10px auto;
+	margin: 10px auto 0 auto;
+}

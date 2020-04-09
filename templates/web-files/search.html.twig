@@ -1,0 +1,32 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}Search{% endblock %}
+{% block body %}
+<h1>Searched Product</h1>
+		<table border='1'>
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Name</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>UOM</th>
+					<th>Quantity On Hand</th>
+					<th>Active</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in productlist %}
+				<tr>
+					<td>{{ product.id }}</td>
+					<td>{{ product.name }}</td>
+					<td>{{ product.categoryID.CategoryName}}</td>
+					<td>{{ product.price }}</td>
+					<td>{{ product.unitID.UnitName}}</td>
+					<td>{{ product.quantity}}</td>
+					<td><input type="checkbox" disabled="disabled" {{ product.ActiveStatus ? "checked"}}/>	</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock %}

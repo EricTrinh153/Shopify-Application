@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edit{% endblock %}
+{% block body %}
+
+{{ form_start(form) }}
+    <h1>Product > Details</h1>
+<hr>
+    {{form_widget(form.save)}}
+<hr>
+<fieldset id="basic-info">
+    <legend>Basic</legend>
+    
+    {{ form_label(form.id) }}
+    {{ form_widget(form.id) }}
+    {{ form_label(form.active_status) }}
+    {{ form_widget(form.active_status) }}
+    <p>
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    <p>
+    {{ form_label(form.categoryID,'Category') }}
+    {{ form_widget(form.categoryID) }}
+    <p>
+    {{ form_label(form.unitID,'Unit') }}
+    {{ form_widget(form.unitID) }}
+    
+</fieldset>
+<fieldset id="extra-info">
+    <legend>Extra Information</legend>
+    {{ form_label(form.quantity) }}
+    {{ form_widget(form.quantity) }}
+    <p>
+    {{ form_label(form.price) }}
+    {{ form_widget(form.price) }}
+    <p>
+    {{ form_label(form.note) }}
+    {{ form_widget(form.note) }}
+</fieldset>
+
+{{ form_end(form) }}
+
+{% endblock %}

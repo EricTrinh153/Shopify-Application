@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block title %}Product{% endblock %}
+{% block body %}
+<h1>Products</h1>
+		<hr>
+		<form>
+			
+			{{form_start(form)}}
+			{{form_label(form.name)}}
+			{{form_widget(form.name)}}
+			{{form_label(form.categoryID)}}
+			{{form_widget(form.categoryID)}}
+			{{form_label(form.search)}}
+			{{form_widget(form.search)}}
+			<button style="position:relative; float:right;"> <a href="/product/new">Create Product</a></button>
+			{{form_end(form)}}
+			</button>
+		</form>
+		<hr>
+		<table border='1'>
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Name</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>UOM</th>
+					<th>Quantity On Hand</th>
+					<th>Active</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in products %}
+				<tr>
+					<td>{{ product.id }}</td>
+					<td>{{ product.name }}</td>
+					<td>{{ product.categoryID.CategoryName}}</td>
+					<td>{{ product.price }}</td>
+					<td>{{ product.unitID.UnitName}}</td>
+					<td>{{ product.quantity}}</td>
+					<td><input type="checkbox" disabled="disabled" {{ product.ActiveStatus ? "checked"}}/>	</td>
+					<td><a href="/product/edit/{{ product.id }}">Edit</a></td>
+					<td><a href="/product/delete/{{ product.id }}" onclick="return confirm('Are you sure want to delete this product?')">Delete</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock %}
