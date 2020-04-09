@@ -10,13 +10,8 @@ use App\Form\TaskType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,7 +23,7 @@ class WebController extends AbstractController
      * @Route("/", name="product")
      * @Method({"GET"})
      */
-    public function home(Request $request){
+    public function home(Request $request,$categoryID,$name){
         //If I add $categoryID and $name as the function argument it will return an error, and I can not solve it
         //$categoryID,$name
         $product= $this->getDoctrine()->getRepository(Productlist::class)->findAll();
@@ -42,12 +37,13 @@ class WebController extends AbstractController
     ))
         ->add('search',SubmitType::class, array('label'=>'Search'))
         ->getForm();
+        return $this->render('web-files/product.html.twig',array('products'=>$product,'form'=>$form->createView()));
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            $product=$this->getDoctrine()->getRepository(Productlist::class)->find($categoryID,$name);
-            return $this->render('web-files/search.html.twig',array('productlist'=>$product));
+            $productlist=$this->getDoctrine()->getRepository(Productlist::class)->find($categoryID,$name);
+            return $this->render('web-files/search.html.twig',array('productlist'=>$productlist));
         }
-        return $this->render('web-files/product.html.twig',array('products'=>$product,'form'=>$form->createView()));
+        
     }
 
     /**
